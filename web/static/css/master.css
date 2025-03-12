@@ -1,0 +1,53 @@
+html {
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 15px 0 0 15px;
+  }
+
+  .pricing-header {
+    max-width: 700px;
+  }
+
+  .card-deck .card {
+    min-width: 220px;
+    min-height: 320px;
+  }
+
+  .header {
+    min-height: 400px;
+    color: white;
+  }
+
+  .header-small {
+    min-height: 100px;
+    color: white;
+  }
+
+  .headerbackground {
+    background-image: url('../images/CreativewithAI.jpeg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .layer {
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .padded {
+    padding: 0 5px 0 15px;
+  }

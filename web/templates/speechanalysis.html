@@ -1,0 +1,190 @@
+<!doctype html>
+<head>
+    <title>Hello AI Bootcamp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/master.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<html>
+   <body>
+    <style >
+      .img-fluid {
+        max-width: 50%;
+        height: auto;
+      }
+    </style>
+     <main>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid"></div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#">Global AI Bootcamp</a>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarColor01">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+          </div>
+        </div>
+      </nav>
+      <br />
+      <!-- <div class="row featurette justify-content-center px-3">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading">Get Creative with AI: Vision and Speech</h2>
+          <p class="lead">Demo</p>
+        </div>
+        <div class="col-md-3 order-md-1">
+          <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/CreativewithAI.jpeg') }}" alt="Azure Logo" width="300" height="300"/>
+        </div>
+      </div> -->
+      <div class="header-small row featurette justify-content-center px-3 headerbackground">
+        <div class="col-md-7 order-md-2 layer">
+          <h2 class="featurette-heading">Get Creative with AI: Vision and Speech</h2>
+          <p class="lead">Demo</p>
+        </div>
+        <div class="col-md-3 order-md-1">
+            <span>&nbsp;</span>
+        </div>
+      </div>  
+      <hr class="featurette-divider">
+      <div class="container mt-10">
+        <h4 class="text-center">Expand the horizon of AI with Speech Analysis</h4>
+      </div>
+      <div class="container mt-10" style="width: 80%;"></div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="speech-analysis-tab" data-toggle="tab" href="#speech-analysis" role="tab" aria-controls="speech-analysis" aria-selected="true">Speech Analysis</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="audio-generation-tab" data-toggle="tab" href="#audio-generation" role="tab" aria-controls="audio-generation" aria-selected="false">Audio Generation</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="video-analysis-tab" data-toggle="tab" href="#video-analysis" role="tab" aria-controls="video-analysis" aria-selected="false">Video Analysis</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="speech-analysis" role="tabpanel" aria-labelledby="speech-analysis-tab">
+            <div class="container mt-3"></div>
+              <div class="row">
+                <div class="col-md-3 align-items-center">
+                  <h3>Audio Playback</h3>
+                  <audio id="audioPlayer" controls>
+                    <source src="{{ url_for('static', filename='audio/wikipediaOcelot.wav') }}" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+                <div class="col-md-9">
+                  <h3>Speech Analysis</h3>
+                    <div class="form-group row">
+                    <div class="col-md-6">
+                      <label for="dropdownMenu">Select an Option</label>
+                      <select class="form-control" id="dropdownMenu">
+                      <option value="option1">Option 1</option>
+                      <option value="option2">Option 2</option>
+                      <option value="option3">Option 3</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-end">
+                      <button class="btn btn-secondary" id="translateButton">Translate</button>
+                    </div>
+                    </div>
+                  <script type="text/javascript">
+                    document.getElementById('translateButton').addEventListener('click', function() {
+                      var outputTextArea = document.getElementById('outputTextArea');
+                      var textToTranslate = outputTextArea.value;
+                      // Add your translation logic here
+                      alert('Translate button clicked. Text to translate: ' + textToTranslate);
+                    });
+                  </script>
+                  <div class="form-group">
+                    <label for="outputTextArea">Output</label>
+                    <textarea class="form-control" id="outputTextArea" rows="10" readonly></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+              document.getElementById('dropdownMenu').addEventListener('change', function() {
+                var selectedOption = this.value;
+                var outputTextArea = document.getElementById('outputTextArea');
+                outputTextArea.value = 'You selected: ' + selectedOption;
+              });
+            </script>
+          </div>
+          <div class="tab-pane fade" id="audio-generation" role="tabpanel" aria-labelledby="audio-generation-tab">
+            <div class="container mt-3" style="max-width: 100%;">
+                <div class="col-md-6">
+                  <h3>Menu Pics</h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <img src="{{ url_for('static', filename='images/sample1.png') }}" class="img-fluid" alt="Sample Image 1">
+                    </div>
+                    <div class="col-md-6">
+                      <img src="{{ url_for('static', filename='images/sample2.png') }}" class="img-fluid" alt="Sample Image 2">
+                    </div>
+                    <div class="col-md-6">
+                      <img src="{{ url_for('static', filename='images/sample3.png') }}" class="img-fluid" alt="Sample Image 3">
+                    </div>
+                    <div class="col-md-6">
+                      <img src="{{ url_for('static', filename='images/sample4.png') }}" class="img-fluid" alt="Sample Image 4">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="userInput">Input</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="userInput" placeholder="Enter your query" aria-label="User Input">
+                      <div class="input-group-append">
+                      <button class="btn btn-primary" type="button" id="submitQueryButton">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="responseOutput">Response</label>
+                    <textarea class="form-control" id="responseOutput" rows="10" readonly placeholder="Response will be displayed here"></textarea>
+                  </div>
+                </div>
+              </div>
+              <script type="text/javascript">
+                document.getElementById('submitQueryButton').addEventListener('click', function() {
+                var userInput = document.getElementById('userInput').value;
+                var url = "{{ url_for('chatwithdata') }}?query=" + encodeURIComponent(userInput);
+                window.location.href = url;
+                });
+
+                document.getElementById('userInput').addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                  event.preventDefault();
+                  document.getElementById('submitQueryButton').click();
+                }
+                });
+              </script></script></div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="video-analysis" role="tabpanel" aria-labelledby="video-analysis-tab">
+            <div class="container mt-3">
+              <h3>Video Analysis</h3>
+              <p>This is a placeholder for the Video analysis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     </main>   
+     <!-- Include jQuery and Bootstrap JS -->
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+   </body>
+</html>

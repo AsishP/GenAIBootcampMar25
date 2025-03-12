@@ -1,0 +1,79 @@
+import os
+from scripts import vision_detect
+
+from flask import (Flask, redirect, render_template, request,
+                   send_from_directory, url_for)
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+   print('Request for index page received')
+   return render_template('index.html')
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+@app.route('/imagevision')
+def imagevision():
+   print('Request for imagevision received')
+   return render_template('imagevision.html')
+
+@app.route('/speechanalysis')
+def speechanalysis():
+   print('Request for speech analysis received')
+   return render_template('speechanalysis.html')
+
+@app.route('/defect', methods=['GET'])
+def defect():
+    image = request.args.get('image')
+    ref_image = request.args.get('refImage')
+    jsonOutput = request.args.get('jsonOutput')
+    if image and ref_image:
+        print('Request for defect detection received with image=%s and refImage=%s' % (image, ref_image))
+        result = vision_detect.getdefectdetails(image, ref_image, jsonOutput)
+        return render_template('imagevision.html', result=result)
+    else:
+        print('Request for defect detection received with missing image or refImage -- redirecting')
+        return redirect(url_for('imeagevision'))
+    
+@app.route('/chatwithdata', methods=['GET'])
+def chatwithdata():
+    message = request.args.get('query')
+    if message != "":
+        print('Requesting an answer for quetion {message}')
+        result = vision_detect.getChatResult(message)
+        return render_template('imagevision.html', result=result)
+    else:
+        print('Request for chat meesage received with emptry string -- redirecting')
+        return redirect(url_for('imagevision'))
+    
+
+@app.route('/speechanalysis', methods=['GET'])
+def speechanalysis():
+    message = request.args.get('query')
+    if message != "":
+        print('Requesting an answer for quetion {message}')
+        result = vision_detect.getChatResult(message)
+        return render_template('imagevision.html', result=result)
+    else:
+        print('Request for chat meesage received with emptry string -- redirecting')
+        return redirect(url_for('imagevision'))
+
+
+@app.route('/hello', methods=['POST'])
+def hello():
+   name = request.form.get('name')
+
+   if name:
+       print('Request for hello page received with name=%s' % name)
+       return render_template('hello.html', name = name)
+   else:
+       print('Request for hello page received with no name or blank name -- redirecting')
+       return redirect(url_for('index'))
+
+
+if __name__ == '__main__':
+   app.run()

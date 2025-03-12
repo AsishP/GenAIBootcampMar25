@@ -1,0 +1,28 @@
+SPEECH_KEY = ""
+SPEECH_REGION = ""
+TTS_SPEECH_KEY = ""
+TTS_SPEECH_REGION = ""
+CONTENT_URLS = '''[
+                    "https://crbn.us/hello.wav",
+                    "https://crbn.us/whatstheweatherlike.wav"
+                ]'''
+DESTINATION_CONTAINER_URL = ""
+AZURE_OPENAI_API_KEY1 = "" ## supporting Vision
+AZURE_OPENAI_ENDPOINT1 = "" ## supporting Vision
+AZURE_OPENAI_API_KEY2 = "" ## supporting Whisper and Text to Speech
+AZURE_OPENAI_ENDPOINT2 = "" ## supporting Whisper and Text to Speech
+API_VERSION = "2024-02-01"
+VISION_API_VERSION = "2023-12-01-preview"
+TTS_API_VERSION = "2024-02-15-preview"
+WHISPER_DEPLOYMENT_NAME = ""
+DEPLOYMENT_NAME = ""
+VISION_DEPLOYMENT_NAME = ""
+TTS_DEPLOYMENT_NAME = ""
+IMAGEURL = ""
+VIDEOINDEXERENPOINT = ""
+VIDEOINDEXERKEY = ""
+COMPUTERVISIONENDPOINT = ""
+COMPUTERVISIONKEY = ""
+WHISPERMODELID = ""
+VIDEOURL1 = ""
+VIDEOURL2 = ""

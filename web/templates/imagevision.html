@@ -12,15 +12,20 @@
         max-width: 50%;
         height: auto;
       }
+
+      .img-fluid-complete {
+        max-width: 90%;
+        height: auto;
+      }
     </style>
      <main>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid"></div>
+        <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
           </button>
           <a class="navbar-brand" href="#">Global AI Bootcamp</a>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarColor01">
+          <div class="collapse navbar-collapse justify-content-ritht" id="navbarColor01">
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="/">Home</a>
@@ -61,20 +66,20 @@
       <div class="container mt-10">
         <h4 class="text-center">Expand the horizon of AI with Image Analysis</h4>
       </div>
-      <div class="container mt-10" style="width: 80%;"></div>
+      <div class="container mt-5" style="max-width: 90%;">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="defect-detection-tab" data-toggle="tab" href="#defect-detection" role="tab" aria-controls="defect-detection" aria-selected="true">Defect Detection</a>
+            <a class="nav-link {% if tabselected == 'defect-detection' %}active{% endif %}" id="defect-detection-tab" data-toggle="tab" href="#defect-detection" role="tab" aria-controls="defect-detection" aria-selected="{% if active == 'defect-detection' %}true{% else %}false{% endif %}">Defect Detection</a>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link" id="chat-with-data-tab" data-toggle="tab" href="#chat-with-data" role="tab" aria-controls="chat-with-data" aria-selected="false">Chat with Data</a>
+            <a class="nav-link {% if tabselected == 'chat-with-data' %}active{% endif %}" id="chat-with-data-tab" data-toggle="tab" href="#chat-with-data" role="tab" aria-controls="chat-with-data" aria-selected="{% if active == 'chat-with-data' %}true{% else %}false{% endif %}">Chat with Data</a>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link" id="video-analysis-tab" data-toggle="tab" href="#video-analysis" role="tab" aria-controls="video-analysis" aria-selected="false">Video Analysis</a>
+            <a class="nav-link {% if tabselected == 'image-generation' %}active{% endif %}" id="video-analysis-tab" data-toggle="tab" href="#image-generation" role="tab" aria-controls="image-generation" aria-selected="{% if active == 'image-generation' %}true{% else %}false{% endif %}">Image Generation</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="defect-detection" role="tabpanel" aria-labelledby="defect-detection-tab">
+          <div class="tab-pane fade {% if tabselected == 'defect-detection' %}show active{% endif %}" id="defect-detection" role="tabpanel" aria-labelledby="defect-detection-tab">
             <div class="container justify-content-center px-3 align-items-center">
               <div class="row">
                 <div class="col-md-6">
@@ -83,7 +88,7 @@
                       <h5 class="card-title">Cola Can (Reference)</h5>
                       <p class="card-text">Cola Can reference image</p>
                     </div>
-                    <img src="{{ url_for('static', filename='images/colacan.png') }}" class="card-img-top img-fluid" alt="Image 1">
+                    <img src="{{ url_for('static', filename='images/colacan.png') }}" class="card-img-top img-fluid-complete" alt="Image 1">
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -92,7 +97,7 @@
                       <h5 class="card-title">Cola Can (with Defect)</h5>
                       <p class="card-text">Can with some damage</p>
                     </div>
-                    <img src="{{ url_for('static', filename='images/colacanwithdefect.png') }}" class="card-img-top img-fluid" alt="Image 2">
+                    <img src="{{ url_for('static', filename='images/colacanwithdefect.png') }}" class="card-img-top img-fluid-complete" alt="Image 2">
                   </div>
                 </div>
               </div>
@@ -113,6 +118,7 @@
                 <strong>Processing...</strong> Please wait while we analyze the image.
               <div class="progress">
                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                <img src="{{ url_for('static', filename='images/progress-question.gif') }}" alt="Progress" class="img-fluid mt-3">
               </div>
             </div>
             </div>
@@ -151,25 +157,25 @@
                 isProcessing = true;
                 toggleProgressBar();
                 var isChecked = document.getElementById('jsonOutputCheckbox').checked ? '1' : '0';
-                var url = "{{ url_for('defect', image='images/colacanwithdefect.png', refImage='images/colacan.png') | safe }} &jsonOutput=" + isChecked;
+                var url = "{{ url_for('defect', image='images/colacanwithdefect.png', refImage='images/colacan.png') | safe }} &tabselected=defect-detection&jsonOutput=" + isChecked;
                 window.location.href = url;
               });
              
             </script>
           </div>
-          <div class="tab-pane fade" id="chat-with-data" role="tabpanel" aria-labelledby="chat-with-data-tab">
+          <div class="tab-pane fade {% if tabselected == 'chat-with-data' %} show active{% endif %}" id="chat-with-data" role="tabpanel" aria-labelledby="chat-with-data-tab">
             <div class="container mt-3" style="max-width: 100%;">
+              <div class="row">
                 <div class="col-md-6">
                   <h3>Menu Pics</h3>
-                    <div class="row"></div>
-                      {% for image in images %}
-                        {% if image.startswith('food') %}
-                          <div class="col-md-6">
-                            <img src="{{ url_for('static', filename='images/' ~ image) }}" class="img-fluid" alt="Sample Image">
+                      {% set images = ['food1.jpg', 'food2.jpg', 'food3.jpg', 'food4.jpg', 'food5.jpg', 'food6.jpg', 'food7.jpg', 'food8.jpg', 'food9.jpg', 'food10.jpg'] %} <!-- Example image list -->
+                        <div class="row">
+                        {% for image in images %}
+                          <div class="col-md-6 p-1 justify-content-center">
+                          <img src="{{ url_for('static', filename='images/' ~ image) }}" class="img-fluid-complete" alt="Sample Image">
                           </div>
-                        {% endif %}
-                      {% endfor %}
-                    </div>
+                        {% endfor %}
+                        </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
@@ -183,27 +189,68 @@
                   </div>
                   <div class="form-group">
                     <label for="responseOutput">Response</label>
-                    <textarea class="form-control" id="responseOutput" rows="10" readonly placeholder="Response will be displayed here"></textarea>
+                    {% if chatdataresult %}
+                      <textarea id="dynamicLabel" class="shadow p-3 mb-5 bg-white rounded" style="min-width: 90%; display: block;" rows="10" readonly placeholder="Chat with Data Result">{{ chatdataresult }}</textarea>
+                      <script type="text/javascript">chatprocessingDone();</script>
+                    {% else %}
+                      <textarea id="dynamicLabel" class="shadow p-3 mb-5 bg-white rounded" style="min-width: 90%; display: block;" rows="10" readonly placeholder="Chat with data Result awaiting..."></textarea>
+                    {% endif %}
+                  </div>
+                  <div class="container mt-3" id="chatprogressBarContainer" style="display: none;">
+                    <div class="alert alert-info" role="alert">
+                      <strong>Processing...</strong> Please wait while we analyze the images and your question.
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" id="chatprogressbar" role="progressbar" style="width: 50%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      <img src="{{ url_for('static', filename='images/progress-question.gif') }}" alt="Progress" class="img-fluid mt-3">
+                    </div>
                   </div>
                 </div>
+                </div>
+              </div>
               </div>
               <script type="text/javascript">
-                document.getElementById('submitQueryButton').addEventListener('click', function() {
-                var userInput = document.getElementById('userInput').value;
-                var url = "{{ url_for('chatwithdata') }}?query=" + encodeURIComponent(userInput);
-                window.location.href = url;
-                });
+                var ischatProcessing = false; // Set to false when processing is done
 
-                document.getElementById('userInput').addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                  event.preventDefault();
-                  document.getElementById('submitQueryButton').click();
+                function togglechatProgressBar() {
+                var chatprogressBarContainer = document.getElementById('chatprogressBarContainer');
+                var chatprogressBar = document.getElementById('chatprogressbar');
+                if (ischatProcessing) {
+                  chatprogressBarContainer.style.display = 'block';
+                } else {
+                  chatprogressBar.style.width = '100%';
+                  setTimeout(function() {
+                  chatprogressBarContainer.style.display = 'none';
+                  }, 2000); // Delay hiding to allow the progress bar to reach 100%
                 }
-                });
-              </script></script></div>
+                }
+    
+              // Call this function to hide the progress bar when processing is done
+               function chatprocessingDone() {
+                ischatProcessing = false;
+                togglechatProgressBar();
+              }
+
+              document.getElementById('submitQueryButton').addEventListener('click', function() {
+              var userInput = document.getElementById('userInput').value;
+              ischatProcessing = true;
+              togglechatProgressBar();
+
+              var url = "{{ url_for('chatwithdata') }}?query=" + encodeURIComponent(userInput) + "&tabselected=chat-with-data";
+              window.location.href = url;
+              });
+
+              document.getElementById('userInput').addEventListener('keypress', function(event) {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                ischatProcessing = true;
+                togglechatProgressBar();
+                document.getElementById('submitQueryButton').click();
+              }
+              });
+              </script></div>
             </div>
           </div>
-          <div class="tab-pane fade" id="video-analysis" role="tabpanel" aria-labelledby="video-analysis-tab">
+          <div class="tab-pane fade {% if tabselected == 'image-generation' %} show active{% endif %}" id="video-analysis" role="tabpanel" aria-labelledby="video-analysis-tab">
             <div class="container mt-3">
               <h3>Image Generation</h3>
               <p>This is a placeholder for the Text to Image</p>

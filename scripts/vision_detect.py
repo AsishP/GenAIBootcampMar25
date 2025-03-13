@@ -166,7 +166,7 @@ def getChatResult(message):
         { "role": "user", "content": [
             {
                 "type": "text",
-                "text": "Here are the food images for analysis",  # Pass the prompt
+                "text": f"{message}",  # Pass the prompt
             },
             *[
                 {
@@ -179,7 +179,7 @@ def getChatResult(message):
         ],
         } 
     ],
-    max_tokens=2000 
+    max_tokens=4000 
     )
 
     ## Print the response from the Azure Open AI endpoint

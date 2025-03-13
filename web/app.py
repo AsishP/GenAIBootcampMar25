@@ -1,5 +1,5 @@
 import os
-from scripts import vision_detect
+from scripts import vision_detect, speech_detect
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
@@ -16,25 +16,28 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route('/imagevision')
+@app.route('/imagevision', methods=['GET'])
 def imagevision():
-   print('Request for imagevision received')
-   return render_template('imagevision.html')
+    tabselected = request.args.get('tabselected')
+    print('Request for imagevision received with tabselected=%s' % tabselected)
+    return render_template('imagevision.html', tabselected=tabselected)
 
 @app.route('/speechanalysis')
 def speechanalysis():
+   tabselected = request.args.get('tabselected')
    print('Request for speech analysis received')
-   return render_template('speechanalysis.html')
+   return render_template('speechanalysis.html', tabselected=tabselected)
 
 @app.route('/defect', methods=['GET'])
 def defect():
     image = request.args.get('image')
     ref_image = request.args.get('refImage')
     jsonOutput = request.args.get('jsonOutput')
+    tabselected = request.args.get('tabselected')
     if image and ref_image:
         print('Request for defect detection received with image=%s and refImage=%s' % (image, ref_image))
         result = vision_detect.getdefectdetails(image, ref_image, jsonOutput)
-        return render_template('imagevision.html', result=result)
+        return render_template('imagevision.html', result=result, tabselected=tabselected)
     else:
         print('Request for defect detection received with missing image or refImage -- redirecting')
         return redirect(url_for('imeagevision'))
@@ -42,26 +45,37 @@ def defect():
 @app.route('/chatwithdata', methods=['GET'])
 def chatwithdata():
     message = request.args.get('query')
+    tabselected = request.args.get('tabselected')
     if message != "":
         print('Requesting an answer for quetion {message}')
         result = vision_detect.getChatResult(message)
-        return render_template('imagevision.html', result=result)
+        return render_template('imagevision.html', chatdataresult=result, tabselected=tabselected)
     else:
         print('Request for chat meesage received with emptry string -- redirecting')
         return redirect(url_for('imagevision'))
     
 
-@app.route('/speechanalysis', methods=['GET'])
-def speechanalysis():
-    message = request.args.get('query')
-    if message != "":
-        print('Requesting an answer for quetion {message}')
-        result = vision_detect.getChatResult(message)
-        return render_template('imagevision.html', result=result)
+@app.route('/speechtotext', methods=['GET'])
+def speechtotext():
+    tabselected = request.args.get('tabselected')
+    result = speech_detect.audiotranscription()
+    if result:
+        return render_template('speechanalysis.html', speechtranscriptionresult=result, tabselected=tabselected)
     else:
-        print('Request for chat meesage received with emptry string -- redirecting')
-        return redirect(url_for('imagevision'))
-
+        print('Request for speech transcription received with empty result -- redirecting')
+        return render_template('speechanalysis.html', speechtranscriptionresult="No transcription result received.", tabselected=tabselected)
+    
+@app.route('/speechqueries', methods=['GET', 'POST'])
+def speechqueries():
+    tabselected = request.args.get('tabselected')
+    queries = request.form.get('queries')
+    result = speech_detect.audio_multiturn_conversation(queries)
+    if result:
+        return render_template('speechanalysis.html', speechanalysis=result, tabselected=tabselected)
+    else:
+        print('Request for speech transcription received with empty result -- redirecting')
+        return render_template('speechanalysis.html', speechtranscriptionresult="No transcription result received.", tabselected=tabselected)
+    
 
 @app.route('/hello', methods=['POST'])
 def hello():

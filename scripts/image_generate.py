@@ -4,7 +4,7 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 
-def generate_image(prompt):
+def generate_image(prompt, style):
     """
     Generate an image using the Stability AI API.
     
@@ -27,6 +27,7 @@ def generate_image(prompt):
         data={
             "prompt": prompt,
             "output_format": "png",
+            "style_preset": style if style else "photographic"
         },
     )
 

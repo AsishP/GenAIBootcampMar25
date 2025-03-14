@@ -67,10 +67,11 @@ def chatwithdata():
 @app.route('/imagegenerate', methods=['GET'])
 def imagegenerate():
     message = request.args.get('query')
+    style = request.args.get('style')
     tabselected = request.args.get('tabselected')
     if message != "":
         print('Requesting an image based on {message}')
-        result = image_generate.generate_image(message)
+        result = image_generate.generate_image(message, style)
         return render_template('imagevision.html', generated_image=result, tabselected=tabselected)
     else:
         print('Request for chat meesage received with emptry string -- redirecting')
@@ -110,7 +111,7 @@ def videotranscript():
     else:
         print('Request for video analysis received with empty result -- redirecting')
         return render_template('videoanalysis.html', videotranscriptresult="No Video Analysis result received.", tabselected=tabselected)
-
+    
 @app.route('/videoanalysis', methods=['GET'])
 def videoanalysis():
     speechanalysisqueries = []

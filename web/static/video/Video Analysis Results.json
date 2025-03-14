@@ -1,0 +1,1364 @@
+# Video Analysis Results
+
+## Timestamp: 0 - 1467
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "Introduction to Flight Simulator collaboration, featuring Microsoft Azure AI."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Aerial view of a coastal region with an airplane flying over the ocean."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "WideAngle"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Promo"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Showcasing technology collaboration."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Microsoft"
+            },
+            {
+                "type": "string",
+                "valueString": "Azure AI"
+            }
+        ]
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Flight Simulator collaboration with Microsoft Azure AI."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 0.726
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Coastal region"
+            }
+        ]
+    }
+}
+```
+
+---
+
+## Timestamp: 1467 - 3233
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "Discussion around neural TTS technology and the importance of data quality."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Indoor setting with modern geometric wall designs."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "Medium"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Interview"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Explaining the neural TTS model."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Speaker discusses neural TTS and the importance of good data."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 2.046
+            },
+            {
+                "type": "number",
+                "valueNumber": 2.64
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": []
+    }
+}
+```
+
+---
+
+## Timestamp: 3233 - 7367
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "The segment visually represents audio waves, highlighting technology processing."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Visual representation of audio waves, indicating technology focus."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "CloseUp"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Tutorial"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Visual representation of TTS data processing."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Audio waves representing neural TTS technology."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 4.059
+            },
+            {
+                "type": "number",
+                "valueNumber": 4.884
+            },
+            {
+                "type": "number",
+                "valueNumber": 5.709
+            },
+            {
+                "type": "number",
+                "valueNumber": 6.534
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": []
+    }
+}
+```
+
+---
+
+## Timestamp: 7367 - 8200
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "Speaker mentions the advantages of cognitive services offerings."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Indoor setting with modern design."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "Medium"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Interview"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Discussing cognitive services offerings."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Continuation of speaker's discussion on cognitive services."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 7.788
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": []
+    }
+}
+```
+
+---
+
+## Timestamp: 8200 - 11367
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "The segment showcases a landscape view with fields and technology facilities."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Outdoor view of a landscape with fields and a facility."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "WideAngle"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Documentary"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Displaying technology infrastructure."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Landscape showcasing technology facilities."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 8.976
+            },
+            {
+                "type": "number",
+                "valueNumber": 9.768
+            },
+            {
+                "type": "number",
+                "valueNumber": 10.56
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Fields"
+            }
+        ]
+    }
+}
+```
+
+---
+
+## Timestamp: 11367 - 13567
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "The segment features a data center with rows of servers, illustrating technology infrastructure."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Indoor view of a data center with servers."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "WideAngle"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Documentary"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Showcasing data center infrastructure."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Data center featuring rows of servers."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 12.078
+            },
+            {
+                "type": "number",
+                "valueNumber": 12.804
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": []
+    }
+}
+```
+
+---
+
+## Timestamp: 13567 - 16100
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "Speaker discusses data accumulation for creating natural voice algorithms."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Indoor setting with modern geometric wall designs."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "Medium"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Interview"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Explaining data accumulation for TTS models."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Continuation of speaker's discussion on data accumulation."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 14.19
+            },
+            {
+                "type": "number",
+                "valueNumber": 14.817
+            },
+            {
+                "type": "number",
+                "valueNumber": 15.444
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": []
+    }
+}
+```
+
+---
+
+## Timestamp: 16100 - 19433
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "A scenic flight over a landscape, showcasing flight simulation capabilities."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Aerial view of a scenic landscape with an airplane flying over."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "WideAngle"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Promo"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Promoting flight simulation technology."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Flight over a scenic landscape."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 16.929
+            },
+            {
+                "type": "number",
+                "valueNumber": 17.754
+            },
+            {
+                "type": "number",
+                "valueNumber": 18.579
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Scenic landscape"
+            }
+        ]
+    }
+}
+```
+
+---
+
+## Timestamp: 19433 - 23967
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "Flight simulation over a historic castle, emphasizing technology's ability to recreate realistic environments."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Aerial view of a castle and surrounding landscape."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "WideAngle"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Promo"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Promoting flight simulation technology."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Flight simulation over a historic castle."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 20.196
+            },
+            {
+                "type": "number",
+                "valueNumber": 20.955
+            },
+            {
+                "type": "number",
+                "valueNumber": 21.714
+            },
+            {
+                "type": "number",
+                "valueNumber": 22.473
+            },
+            {
+                "type": "number",
+                "valueNumber": 23.232
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Historic castle"
+            }
+        ]
+    }
+}
+```
+
+---
+
+## Timestamp: 23967 - 30033
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "Speaker discusses the higher fidelity of cognitive services offerings."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Indoor office setting."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "Medium"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Interview"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Discussing the benefits of cognitive services."
+            }
+        ]
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Speaker talks about the fidelity of cognitive services."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 24.816
+            },
+            {
+                "type": "number",
+                "valueNumber": 25.674
+            },
+            {
+                "type": "number",
+                "valueNumber": 26.532
+            },
+            {
+                "type": "number",
+                "valueNumber": 27.39
+            },
+            {
+                "type": "number",
+                "valueNumber": 28.248
+            },
+            {
+                "type": "number",
+                "valueNumber": 29.106
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": []
+    }
+}
+```
+
+---
+
+## Timestamp: 30033 - 33200
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "A person discusses advancements in voice technology, emphasizing how it now sounds more human-like. The setting appears to be an office with glass partitions."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Indoor office setting with glass partitions visible."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "Medium"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Documentary"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": []
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Discussion on voice technology resembling human voice."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 0.789
+            },
+            {
+                "type": "number",
+                "valueNumber": 1.581
+            },
+            {
+                "type": "number",
+                "valueNumber": 2.373
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": []
+    }
+}
+```
+
+---
+
+## Timestamp: 33200 - 35267
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "An overhead shot of an airplane positioned on the runway, indicating airport operations."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Outdoor setting at an airport."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "WideAngle"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Documentary"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": []
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Aerial view of an airplane on the runway."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 0.691
+            },
+            {
+                "type": "number",
+                "valueNumber": 1.384
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Airport"
+            }
+        ]
+    }
+}
+```
+
+---
+
+## Timestamp: 35267 - 37700
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "Ground crew members are seen directing an Airbus airplane as it taxis, showcasing airport operations."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Outdoor setting with an airplane in view."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "Medium"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Documentary"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": []
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Airbus"
+            }
+        ]
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Ground crew directs an Airbus plane during taxiing."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 0.802
+            },
+            {
+                "type": "number",
+                "valueNumber": 1.594
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Airport"
+            }
+        ]
+    }
+}
+```
+
+---
+
+## Timestamp: 37700 - 39200
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "A scene of busy airport operations, with ground staff and airplanes actively engaged on the tarmac."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Busy airport setting with multiple airplanes and ground staff visible."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "WideAngle"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Documentary"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": []
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": []
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Airport ground staff and airplanes in operation."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 0.481
+            },
+            {
+                "type": "number",
+                "valueNumber": 0.976
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Airport"
+            }
+        ]
+    }
+}
+```
+
+---
+
+## Timestamp: 39200 - 42033
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "An Airbus airplane is seen approaching the airport gate, indicating arrival or departure operations."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Airport setting with an Airbus airplane approaching the gate."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "Medium"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Documentary"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": []
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Airbus"
+            }
+        ]
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Airbus airplane approaches the gate at an airport."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 0.697
+            },
+            {
+                "type": "number",
+                "valueNumber": 1.39
+            },
+            {
+                "type": "number",
+                "valueNumber": 2.083
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Airport"
+            }
+        ]
+    }
+}
+```
+
+---
+
+## Timestamp: 42033 - 43866
+
+### Fields:
+
+```json
+{
+    "description": {
+        "type": "string",
+        "valueString": "The Microsoft logo appears on a black screen, marking the end of the video or segment."
+    },
+    "background": {
+        "type": "string",
+        "valueString": "Black screen with Microsoft logo."
+    },
+    "shotType": {
+        "type": "string",
+        "valueString": "Full"
+    },
+    "videoCategories": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Advertisement"
+            }
+        ]
+    },
+    "usecases": {
+        "type": "array",
+        "valueArray": []
+    },
+    "brands": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Microsoft"
+            }
+        ]
+    },
+    "sentiment": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Neutral"
+            }
+        ]
+    },
+    "highlights": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "string",
+                "valueString": "Display of Microsoft logo."
+            }
+        ]
+    },
+    "videoTransitions": {
+        "type": "array",
+        "valueArray": [
+            {
+                "type": "number",
+                "valueNumber": 0.603
+            },
+            {
+                "type": "number",
+                "valueNumber": 1.197
+            }
+        ]
+    },
+    "locations": {
+        "type": "array",
+        "valueArray": []
+    }
+}
+```
+
+---
+

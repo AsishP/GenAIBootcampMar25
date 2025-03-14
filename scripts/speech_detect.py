@@ -111,6 +111,8 @@ def audio_multiturn_conversation(messages):
     # print(messages_json)
 
     # Get the first turn's response
+    print("Calling the Azure Open AI endpoint to transcribe the audio file. Waiting for response.. \n")
+    # Send the request to the model
     completion = client.chat.completions.create( 
         model=deployment_name, 
         modalities=["text", "audio"], 
@@ -124,9 +126,9 @@ def audio_multiturn_conversation(messages):
 
     result = f"Question: {querymessages[0]} \n {completion.choices[0].message.audio.transcript} \n-------------------------------------\n"   
 
-    while len(querymessages) > 1:
-         # Remove the processed messages to avoid infinite loop
-        querymessages = querymessages[1:]
+    querymessages = querymessages[1:]
+
+    while len(querymessages) >= 1:
 
         print("Add a history message referencing the first turn's audio by ID:")
         print(completion.choices[0].message.audio.id)
@@ -150,10 +152,12 @@ def audio_multiturn_conversation(messages):
         ) 
 
         print(f"Question: {querymessages[0]}")
-        print(completion.choices[0].message.content)
-        result = result + f"Question: {querymessages[0]} \n {completion.choices[0].message.content} \n-------------------------------------\n"   
+        print(completion.choices[0].message.audio.transcript)
+        result = result + f"Question: {querymessages[0]} \n {completion.choices[0].audio.transcript} \n-------------------------------------\n"
 
-    if len(querymessages) == 1:
-        return result
+        # Remove the processed messages to avoid infinite loop
+        querymessages = querymessages[1:]   
+
+    return result
 
    

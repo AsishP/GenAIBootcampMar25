@@ -204,7 +204,26 @@
               <h3>Image Generation</h3>
                 <div class="form-group mt-3">
                 <label for="imageInput">Enter Text for Image Generation</label>
-                <input type="text" class="form-control" id="imageInput" placeholder="Enter text to generate an image">
+                <input type="text" class="form-control mt-3" id="imageInput" placeholder="Enter text to generate an image">
+                <select class="form-control mt-3" id="styleOption">
+                  <option value="3d-model">3d-model</option>
+                  <option value="analog-film">analog-film</option>
+                  <option value="anime">anime</option>
+                  <option value="cinematic">cinematic</option>
+                  <option value="comic-book">comic-book</option>
+                  <option value="digital-art">digital-art</option>
+                  <option value="enhance">enhance</option>
+                  <option value="fantasy-art">fantasy-art</option>
+                  <option value="isometric">isometric</option>
+                  <option value="line-art">line-art</option>
+                  <option value="low-poly">low-poly</option>
+                  <option value="modeling-compound">modeling-compound</option>
+                  <option value="neon-punk">neon-punk</option>
+                  <option value="origami">origami</option>
+                  <option value="photographic" selected>photographic</option>
+                  <option value="pixel-art">pixel-art</option>
+                  <option value="tile-texture">tile-texture</option>
+                </select>
                 </div>
                 <button class="btn btn-primary mt-2" id="generateImageButton">Generate Image</button>
                 {% if generated_image %}
@@ -222,7 +241,12 @@
                   alert("Please enter text to generate an image.");
                   return;
                   }
-                  var url = "{{ url_for('imagegenerate') }}?query=" + encodeURIComponent(imageInput) + "&tabselected=image-generation";
+                  var styleOption = document.getElementById('styleOption').value;
+                  if (!styleOption) {
+                  alert("Please select a style for image generation.");
+                  return;
+                  }
+                  var url = "{{ url_for('imagegenerate') }}?query=" + encodeURIComponent(imageInput) + "&style=" + encodeURIComponent(styleOption) + "&tabselected=image-generation";
                   window.location.href = url;
                 });
                 </script>

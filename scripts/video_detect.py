@@ -65,14 +65,16 @@ def video_transcript(returnmarkdown=False):
         file_location="video\FlightSimulator.mp4",
     )
     
+    print("Creating the Azure Content Understanding Client. \n")
     client = AzureContentUnderstandingClient(
         settings.endpoint,
         settings.api_version,
         subscription_key=settings.subscription_key
     )
-
+    print("Starting the analysis of the video file. \n")
     response = client.begin_analyze(settings.analyzer_id, settings.file_location)
 
+    print("Waiting for the analysis to complete. \n")
     result = client.poll_result(
         response,
         timeout_seconds=60 * 60,
@@ -262,6 +264,7 @@ class AzureContentUnderstandingClient:
         else:
             raise ValueError("File location must be a valid path or URL.")
 
+        print("Analyzing file %s with analyzer: %s" % (file_location, analyzer_id))
         headers.update(self._headers)
         if isinstance(data, dict):
             response = requests.post(
@@ -308,6 +311,7 @@ class AzureContentUnderstandingClient:
         Returns:
             dict: The JSON response of the completed operation if it succeeds.
         """
+        print("Polling for result ...")
         operation_location = response.headers.get("operation-location", "")
         if not operation_location:
             raise ValueError("Operation location not found in response headers.")
@@ -316,6 +320,7 @@ class AzureContentUnderstandingClient:
         headers.update(self._headers)
 
         start_time = time.time()
+        print(f"Polling for result at {operation_location} ... at {start_time}")
         while True:
             elapsed_time = time.time() - start_time
             self._logger.info(

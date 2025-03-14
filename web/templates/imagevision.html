@@ -1,12 +1,6 @@
-<!doctype html>
-<head>
-    <title>Hello AI Bootcamp</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/master.css') }}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-</head>
-<html>
-   <body>
+{% extends 'base-headersmall.html' %}
+
+{% block content %}
     <style >
       .img-fluid {
         max-width: 50%;
@@ -19,50 +13,6 @@
       }
     </style>
      <main>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand" href="#">Global AI Bootcamp</a>
-          <div class="collapse navbar-collapse justify-content-ritht" id="navbarColor01">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-        </ul>
-          </div>
-        </div>
-      </nav>
-      <br />
-      <!-- <div class="row featurette justify-content-center px-3">
-        <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading">Get Creative with AI: Vision and Speech</h2>
-          <p class="lead">Demo</p>
-        </div>
-        <div class="col-md-3 order-md-1">
-          <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/CreativewithAI.jpeg') }}" alt="Azure Logo" width="300" height="300"/>
-        </div>
-      </div> -->
-      <div class="header-small row featurette justify-content-center px-3 headerbackground">
-        <div class="col-md-7 order-md-2 layer">
-          <h2 class="featurette-heading">Get Creative with AI: Vision and Speech</h2>
-          <p class="lead">Demo</p>
-        </div>
-        <div class="col-md-3 order-md-1">
-            <span>&nbsp;</span>
-        </div>
-      </div>  
-      <hr class="featurette-divider">
       <div class="container mt-10">
         <h4 class="text-center">Expand the horizon of AI with Image Analysis</h4>
       </div>
@@ -258,10 +208,5 @@
           </div>
         </div>
       </div>
-     </main>   
-     <!-- Include jQuery and Bootstrap JS -->
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
-   </body>
-</html>
+     </main>    
+{% endblock %}

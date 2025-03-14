@@ -5,6 +5,7 @@ from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
 app = Flask(__name__)
+speechanalysisqueries =[]
 
 @app.route('/')
 def index():
@@ -24,6 +25,7 @@ def imagevision():
 
 @app.route('/speechanalysis')
 def speechanalysis():
+   speechanalysisqueries = []
    tabselected = request.args.get('tabselected')
    print('Request for speech analysis received')
    return render_template('speechanalysis.html', tabselected=tabselected)
@@ -57,6 +59,7 @@ def chatwithdata():
 
 @app.route('/speechtotext', methods=['GET'])
 def speechtotext():
+    speechanalysisqueries = []
     tabselected = request.args.get('tabselected')
     result = speech_detect.audiotranscription()
     if result:
@@ -68,13 +71,16 @@ def speechtotext():
 @app.route('/speechqueries', methods=['GET', 'POST'])
 def speechqueries():
     tabselected = request.args.get('tabselected')
-    queries = request.form.get('queries')
-    result = speech_detect.audio_multiturn_conversation(queries)
+    request_data = request.get_json()
+    queries = request_data.get('queries')
+    speechanalysisqueries.extend(queries)
+    result = speech_detect.audio_multiturn_conversation(speechanalysisqueries)
     if result:
-        return render_template('speechanalysis.html', speechanalysis=result, tabselected=tabselected)
+        print('Request for speech analysis received with queries=%s' % speechanalysisqueries)
+        return {"speechanalysisresult": result, "tabselected": tabselected, "success": True}
     else:
         print('Request for speech transcription received with empty result -- redirecting')
-        return render_template('speechanalysis.html', speechtranscriptionresult="No transcription result received.", tabselected=tabselected)
+        return {"speechanalysisresult": "No transcription result received.", "tabselected": tabselected, "success": False}
     
 
 @app.route('/hello', methods=['POST'])

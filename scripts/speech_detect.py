@@ -3,6 +3,7 @@ import os
 from openai import AzureOpenAI 
 from mimetypes import guess_type
 from dotenv import load_dotenv
+import json
 load_dotenv()
 
 # Function to encode a local image into data URL 
@@ -18,7 +19,7 @@ def getbase64(audiopath):
         base64_encoded_data = base64.b64encode(audio_file.read()).decode('utf-8')
 
     # Construct the data URL
-    return f"data:{mime_type};base64,{base64_encoded_data}"
+    return base64_encoded_data
  
 ## get the image base64
 def get_audio_filepath_base64(path, base64=False):
@@ -87,15 +88,14 @@ def audio_multiturn_conversation(messages):
         azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT1")
     )
     # Read and encode audio file  
-    with open('audio\EarningsCall.wav', 'rb') as wav_reader: 
-        audio_encoded_string = get_audio_filepath_base64('audio\EarningsCall.wav', base64=True)
+    audio_encoded_string = get_audio_filepath_base64('audio\EarningsCall.wav', base64=True)
 
     # Initialize messages with the first turn's user input 
     messages = [
         { 
             "role": "user", 
             "content": [ 
-                { "type": "text", "text": {querymessages[0]} }, 
+                { "type": "text", "text": querymessages[0] }, 
                 { "type": "input_audio", 
                     "input_audio": { 
                         "data": audio_encoded_string, 
@@ -105,9 +105,14 @@ def audio_multiturn_conversation(messages):
             ] 
         }] 
 
+    # # Convert the messages to a JSON string for debugging or logging purposes
+    # messages_json = json.dumps(messages, indent=4)
+    # print("Messages JSON:")
+    # print(messages_json)
+
     # Get the first turn's response
     completion = client.chat.completions.create( 
-        model={deployment_name}, 
+        model=deployment_name, 
         modalities=["text", "audio"], 
         audio={"voice": "alloy", "format": "wav"}, 
         messages=messages
@@ -117,36 +122,36 @@ def audio_multiturn_conversation(messages):
     print(f"Question: {querymessages[0]}")
     print(completion.choices[0].message.audio.transcript) 
 
-    result = f"Question: {querymessages[0]} \n {completion.choices[0].message.content} \n-------------------------------------\n"   
+    result = f"Question: {querymessages[0]} \n {completion.choices[0].message.audio.transcript} \n-------------------------------------\n"   
 
     while len(querymessages) > 1:
+         # Remove the processed messages to avoid infinite loop
+        querymessages = querymessages[1:]
+
         print("Add a history message referencing the first turn's audio by ID:")
         print(completion.choices[0].message.audio.id)
 
         # Add a history message referencing the first turn's audio by ID 
-        querymessages.append({ 
+        messages.append({ 
             "role": "assistant", 
             "audio": { "id": completion.choices[0].message.audio.id } 
         }) 
 
         # Add the next turn's user message 
-        querymessages.append({ 
+        messages.append({ 
             "role": "user", 
-            "content": {querymessages[0]} 
+            "content": querymessages[0] 
         }) 
 
         # Send the follow-up request with the accumulated messages
         completion = client.chat.completions.create( 
-            model={deployment_name}, 
+            model=deployment_name, 
             messages=messages
         ) 
 
         print(f"Question: {querymessages[0]}")
         print(completion.choices[0].message.content)
         result = result + f"Question: {querymessages[0]} \n {completion.choices[0].message.content} \n-------------------------------------\n"   
-
-        # Remove the processed messages to avoid infinite loop
-        querymessages = messages[1:]
 
     if len(querymessages) == 1:
         return result

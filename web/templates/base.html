@@ -1,0 +1,49 @@
+<!doctype html>
+<head>
+    <title>TechHuddle GenAI Demos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/master.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<html>
+   <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#">Generative AI Creative Demos</a>
+          <div class="collapse navbar-collapse justify-content-right" id="navbarColor01">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="imagevision?tabselected=defect-detection">Image</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/speechanalysis?tabselected=speech-transcription">Speech</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Video</a>
+          </li>
+        </ul>
+          </div>
+        </div>
+      </nav>
+      <br />
+      <div class="header row featurette justify-content-center px-3 headerbackground">
+        <div class="col-md-7 order-md-2 layer">
+          <h2 class="featurette-heading">Get Creative with AI: Vision and Speech</h2>
+          <p class="lead">Demo</p>
+        </div>
+        <div class="col-md-3 order-md-1">
+          <span>&nbsp;</span>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div>
+        {% block content %} {% endblock %}
+      </div>
+    </body>
+    </html>

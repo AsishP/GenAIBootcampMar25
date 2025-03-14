@@ -25,7 +25,7 @@
             <a class="nav-link {% if tabselected == 'chat-with-data' %}active{% endif %}" id="chat-with-data-tab" data-toggle="tab" href="#chat-with-data" role="tab" aria-controls="chat-with-data" aria-selected="{% if active == 'chat-with-data' %}true{% else %}false{% endif %}">Chat with Data</a>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link {% if tabselected == 'image-generation' %}active{% endif %}" id="video-analysis-tab" data-toggle="tab" href="#image-generation" role="tab" aria-controls="image-generation" aria-selected="{% if active == 'image-generation' %}true{% else %}false{% endif %}">Image Generation</a>
+            <a class="nav-link {% if tabselected == 'image-generation' %}active{% endif %}" id="image-generation-tab" data-toggle="tab" href="#image-generation" role="tab" aria-controls="image-generation" aria-selected="{% if active == 'image-generation' %}true{% else %}false{% endif %}">Image Generation</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -197,13 +197,35 @@
                 document.getElementById('submitQueryButton').click();
               }
               });
-              </script></div>
-            </div>
+              </script>
           </div>
-          <div class="tab-pane fade {% if tabselected == 'image-generation' %} show active{% endif %}" id="video-analysis" role="tabpanel" aria-labelledby="video-analysis-tab">
+          <div class="tab-pane fade {% if tabselected == 'image-generation' %} show active{% endif %}" id="image-generation" role="tabpanel" aria-labelledby="image-generation-tab">
             <div class="container mt-3">
               <h3>Image Generation</h3>
-              <p>This is a placeholder for the Text to Image</p>
+                <div class="form-group mt-3">
+                <label for="imageInput">Enter Text for Image Generation</label>
+                <input type="text" class="form-control" id="imageInput" placeholder="Enter text to generate an image">
+                </div>
+                <button class="btn btn-primary mt-2" id="generateImageButton">Generate Image</button>
+                {% if generated_image %}
+                <h4>Generated Image</h4>
+                <div class="text-center">
+                  <img src="data:image/png;base64,{{ generated_image }}" class="img-fluid" alt="Generated Image">
+                </div>
+                {% else %}
+                  <p>No image generated yet. Please provide input to generate an image.</p>
+                {% endif %}
+                <script type="text/javascript">
+                document.getElementById('generateImageButton').addEventListener('click', function() {
+                  var imageInput = document.getElementById('imageInput').value;
+                  if (imageInput.trim() === "") {
+                  alert("Please enter text to generate an image.");
+                  return;
+                  }
+                  var url = "{{ url_for('imagegenerate') }}?query=" + encodeURIComponent(imageInput) + "&tabselected=image-generation";
+                  window.location.href = url;
+                });
+                </script>
             </div>
           </div>
         </div>

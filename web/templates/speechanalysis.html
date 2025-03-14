@@ -166,7 +166,7 @@
                     var userInput = document.getElementById('speechanalysisInput').value;
                     queries.push(userInput);
 
-                    var url = "{{ url_for('speechqueries', tabselected='speech-analysis') }}";
+                    var url = "{{ url_for('speechqueries') }}";
                     fetch(url, {
                       method: 'POST',
                       headers: {

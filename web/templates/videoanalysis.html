@@ -1,0 +1,197 @@
+{% extends 'base-headersmall.html' %}
+
+{% block content %}
+    <style >
+    .img-fluid {
+        max-width: 50%;
+        height: auto;
+    }
+    .container-tab
+    {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 15px 0 0 15px;
+    }
+    </style>
+     <main>
+      <div class="container mt-10">
+        <h4 class="text-center">Expand the horizon of AI with Video Analysis</h4>
+      </div>
+      <div class="container mt-10" style="max-width: 90%;">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link {% if tabselected == 'video-transcript' %}active{% endif %}" id="video-transcript-tab" data-toggle="tab" href="#video-transcript" role="tab" aria-controls="video-transcript" aria-selected="{% if active == 'video-transcript' %}true{% else %}false{% endif %}">Video Transcript</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link {% if tabselected == 'video-analysis' %}active{% endif %}" id="video-analysis-tab" data-toggle="tab" href="#video-analysis" role="tab" aria-controls="video-analysis" aria-selected="{% if active == 'video-analysis' %}true{% else %}false{% endif %}">Video Analysis</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link {% if tabselected == 'video-generation' %}active{% endif %}" id="video-generation-tab" data-toggle="tab" href="#video-generation" role="tab" aria-controls="video-geeneration" aria-selected="{% if active == 'video-generation' %}true{% else %}false{% endif %}">Video Generation</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade {% if tabselected == 'video-transcript' %}show active{% endif %}" id="video-transcript" role="tabpanel" aria-labelledby="video-transcript-tab">
+            <div class="container-tab mt-3">
+              <div class="row">
+                <div class="col-md-3 align-items-center">
+                  <h3 class="mt-3">Video Playback</h3>
+                    <video id="videoPlayer" controls style="max-width: 100%; height: auto;">
+                    <source src="{{ url_for('static', filename='video/FlightSimulator.mp4') }}" type="video/mp4">
+                    Your browser does not support the video element.
+                    </video>
+                </div>
+                <div class="col-md-9">
+                    <h3 class="mt-3">Video Transcript</h3>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <button class="btn btn-primary" type="button" id="submitVideoTranscriptButton">Transcript</button>
+                      </div>
+                    </div>
+                  <div class="mt-3" id="videotranscriptprogressBarContainer" style="display: none;">
+                      <div class="alert alert-info" role="alert">
+                      <strong>Processing...</strong> Please wait while we analyze the video is analysed.
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="videotranscriptprogressbar" style="width: 50%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>        
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <img src="{{ url_for('static', filename='images/progress-question.gif') }}" alt="Progress" class="img-fluid mt-3" width="100" height="100" />
+                    </div>
+                  </div>
+                  </div>
+                  <div class="container-tab mt-3">
+                  {% if videotranscriptresult %}
+                    <textarea id="dynamicLabel" class="shadow p-3 mb-5 bg-white rounded" style="min-width: 90%; height: auto; display: block;" rows="10" readonly placeholder="Analysis Result">{{ videotranscriptresult }}</textarea>
+                    <script type="text/javascript">vtranscriptprocessingDone();</script>
+                  {% else %}
+                    <textarea id="dynamicLabel" class="shadow p-3 mb-5 bg-white rounded" style="min-width: 90%; display: block;" rows="10" readonly placeholder="Analysis Result"></textarea>
+                  {% endif %}
+                </div>
+                </div>
+                <script type="text/javascript">
+                  var isVTranscriptProcessing = false; // Set to false when processing is done
+        
+                    function toggleVTranscriptProgressBar() {
+                    var vtranscriptprogressBarContainer = document.getElementById('videotranscriptprogressBarContainer');
+                    var vtranscriptprogressbar = document.getElementById('videotranscriptprogressbar');
+                    if (isVTranscriptProcessing) {
+                      vtranscriptprogressBarContainer.style.display = 'block';
+                    } else {
+                      vanalysisprogressbar.style.width = '100%';
+                      setTimeout(function() {
+                        vtranscriptprogressBarContainer.style.display = 'none';
+                      }, 2000); // Delay hiding to allow the progress bar to reach 100%
+                    }
+                    }
+        
+                  // Call this function to hide the progress bar when processing is done
+                   function vtranscriptprocessingDone() {
+                    isVTranscriptProcessing = false;
+                    toggleVTranscriptProgressBar();
+                  }
+        
+                  document.getElementById('submitVideoTranscriptButton').addEventListener('click', function() {
+                    isVTranscriptProcessing = true;
+                    toggleVTranscriptProgressBar();
+                    var url = "{{ url_for('videotranscript', tabselected='video-transcript') }}";
+                    window.location.href = url;
+                  });
+                 
+                </script>
+            </div>
+          </div>
+          <div class="tab-pane fade {% if tabselected == 'video-analysis' %}show active{% endif %}" id="video-analysis" role="tabpanel" aria-labelledby="video-analysis-tab">
+            <div class="container-tab mt-3">
+              <div class="row">
+                <div class="col-md-3 align-items-center">
+                  <h3 class="mt-3">Video Playback</h3>
+                    <video id="videoPlayer" controls style="max-width: 100%; height: auto;">
+                    <source src="{{ url_for('static', filename='video/FlightSimulator.mp4') }}" type="video/mp4">
+                    Your browser does not support the video element.
+                    </video>
+                </div>
+                <div class="col-md-9">
+                    <h3 class="mt-3">Video Analysis</h3>
+                    <div class="form-group">
+                      <label for="userInput">Input</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="uservAnalysisInput" placeholder="Enter your query" aria-label="User Input">
+                        <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="submitVAnalysisQueryButton">Submit</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-3" id="videoanalysisprogressBarContainer" style="display: none;">
+                      <div class="alert alert-info" role="alert">
+                      <strong>Processing...</strong> Please wait while we analyze the video is analysed.
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="videoanalysisprogressbar" style="width: 50%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>        
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <img src="{{ url_for('static', filename='images/progress-question.gif') }}" alt="Progress" class="img-fluid mt-3" width="100" height="100" />
+                    </div></div>
+                  </div>
+                  <div class="container-tab mt-3">
+                  {% if videoanalysisresult %}
+                    <textarea id="dynamicLabel" class="shadow p-3 mb-5 bg-white rounded" style="min-width: 90%; display: block;" rows="10" readonly placeholder="Analysis Result">{{ videoanalysisresult }}</textarea>
+                    <script type="text/javascript">vanalysisprocessingDone();</script>
+                  {% else %}
+                    <textarea id="dynamicLabel" class="shadow p-3 mb-5 bg-white rounded" style="min-width: 90%; display: block;" rows="10" readonly placeholder="Analysis Result"></textarea>
+                  {% endif %}
+                </div>
+                </div>
+                <script type="text/javascript">
+                  var isVTranscriptProcessing = false; // Set to false when processing is done
+      
+                  function toggleVTranscriptProgressBar() {
+                  var vanalysisprogressBarContainer = document.getElementById('videoanalysisprogressBarContainer');
+                  var vanalysisprogressbar = document.getElementById('videoanalysisprogressbar');
+                  if (isVTranscriptProcessing) {
+                    vanalysisprogressBarContainer.style.display = 'block';
+                  } else {
+                    vanalysisprogressbar.style.width = '100%';
+                    setTimeout(function() {
+                    vanalysisprogressBarContainer.style.display = 'none';
+                    }, 2000); // Delay hiding to allow the progress bar to reach 100%
+                  }
+                  }
+      
+                // Call this function to hide the progress bar when processing is done
+                  function vanalysisprocessingDone() {
+                  isVTranscriptProcessing = false;
+                  toggleVTranscriptProgressBar();
+                }
+
+                document.getElementById('submitVAnalysisQueryButton').addEventListener('click', function() {
+                var userInput = document.getElementById('uservAnalysisInput').value;
+                isVTranscriptProcessing = true;
+                toggleVTranscriptProgressBar();
+
+                var url = "{{ url_for('videoanalysis') }}?query=" + encodeURIComponent(userInput) + "&tabselected=video-analysis";
+                window.location.href = url;
+                });
+
+                document.getElementById('uservAnalysisInput').addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                  event.preventDefault();
+                  isVTranscriptProcessing = true;
+                  toggleVTranscriptProgressBar();
+                  document.getElementById('submitVAnalysisQueryButton').click();
+                }
+                });
+                 
+                </script>
+              </div>
+            </div>  
+          </div>
+          <div class="tab-pane fade {% if tabselected == 'realtime-audio' %}show active{% endif %}" id="realtime-audio" role="tabpanel" aria-labelledby="realtime-audio-tab">
+            <div class="container mt-3">
+              <h3>Realtime Audio</h3>
+              <p>This is a placeholder for the Real time audio analysis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     </main>     
+{% endblock %}

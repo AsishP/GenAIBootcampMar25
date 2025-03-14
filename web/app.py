@@ -1,5 +1,5 @@
 import os
-from scripts import vision_detect, speech_detect
+from scripts import vision_detect, speech_detect, video_detect, image_generate
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
@@ -30,6 +30,13 @@ def speechanalysis():
    print('Request for speech analysis received')
    return render_template('speechanalysis.html', tabselected=tabselected)
 
+@app.route('/videoanalyse')
+def videoanalyse():
+   speechanalysisqueries = []
+   tabselected = request.args.get('tabselected')
+   print('Request for video analysis received')
+   return render_template('videoanalysis.html', tabselected=tabselected)
+
 @app.route('/defect', methods=['GET'])
 def defect():
     image = request.args.get('image')
@@ -57,6 +64,18 @@ def chatwithdata():
         return redirect(url_for('imagevision'))
     
 
+@app.route('/imagegenerate', methods=['GET'])
+def imagegenerate():
+    message = request.args.get('query')
+    tabselected = request.args.get('tabselected')
+    if message != "":
+        print('Requesting an image based on {message}')
+        result = image_generate.generate_image(message)
+        return render_template('imagevision.html', generated_image=result, tabselected=tabselected)
+    else:
+        print('Request for chat meesage received with emptry string -- redirecting')
+        return redirect(url_for('imagevision'))
+    
 @app.route('/speechtotext', methods=['GET'])
 def speechtotext():
     speechanalysisqueries = []
@@ -70,18 +89,39 @@ def speechtotext():
     
 @app.route('/speechqueries', methods=['GET', 'POST'])
 def speechqueries():
-    tabselected = request.args.get('tabselected')
     request_data = request.get_json()
     queries = request_data.get('queries')
     speechanalysisqueries.extend(queries)
     result = speech_detect.audio_multiturn_conversation(speechanalysisqueries)
     if result:
         print('Request for speech analysis received with queries=%s' % speechanalysisqueries)
-        return {"speechanalysisresult": result, "tabselected": tabselected, "success": True}
+        return {"speechanalysisresult": result, "success": True}
     else:
         print('Request for speech transcription received with empty result -- redirecting')
-        return {"speechanalysisresult": "No transcription result received.", "tabselected": tabselected, "success": False}
-    
+        return {"speechanalysisresult": "No transcription result received.", "success": False}
+ 
+@app.route('/videotranscript', methods=['GET'])
+def videotranscript():
+    speechanalysisqueries = []
+    tabselected = request.args.get('tabselected')
+    result = video_detect.video_transcript(True)
+    if result:
+        return render_template('videoanalysis.html', videotranscriptresult=result, tabselected=tabselected)
+    else:
+        print('Request for video analysis received with empty result -- redirecting')
+        return render_template('videoanalysis.html', videotranscriptresult="No Video Analysis result received.", tabselected=tabselected)
+
+@app.route('/videoanalysis', methods=['GET'])
+def videoanalysis():
+    speechanalysisqueries = []
+    query = request.args.get('query')
+    tabselected = request.args.get('tabselected')
+    result = video_detect.analyse_video(query)
+    if result:
+        return render_template('videoanalysis.html', videoanalysisresult=result, tabselected=tabselected)
+    else:
+        print('Request for video analysis received with empty result -- redirecting')
+        return render_template('videoanalysis.html', videoanalysisresult="No Video Analysis result received.", tabselected=tabselected)
 
 @app.route('/hello', methods=['POST'])
 def hello():
